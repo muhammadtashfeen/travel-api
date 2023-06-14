@@ -50,7 +50,7 @@ At the end, the project should have:
     - Price (integer, see below)
 
 
-### Goals
+### First Steps
 
 ##### Seeding the database
 > php artisan db:seed
