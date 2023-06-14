@@ -48,3 +48,12 @@ At the end, the project should have:
     - Starting date
     - Ending date
     - Price (integer, see below)
+
+
+### Goals
+
+##### Seeding the database
+> php artisan db:seed
+
+##### Creating the first user
+> php artisan user:create
