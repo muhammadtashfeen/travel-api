@@ -7,6 +7,7 @@ use App\Http\Requests\TourListRequest;
 use App\Http\Resources\TourResource;
 use App\Models\Travel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TourController extends Controller
 {
