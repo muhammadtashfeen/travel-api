@@ -39,7 +39,7 @@ class CreateUserCommand extends Command
 
         $role = Role::where('name', $roleName)->first();
 
-        if (!$role) {
+        if (! $role) {
             $this->info('Role not found.');
 
             return -1;
@@ -64,12 +64,12 @@ class CreateUserCommand extends Command
     {
         $validator = Validator::make($user, [
             'name' => ['required', 'max:255', 'string'],
-            'email' => ['required', 'max:255', 'string', 'email', 'unique:' . User::class],
+            'email' => ['required', 'max:255', 'string', 'email', 'unique:'.User::class],
             'password' => ['required', Password::defaults()],
         ]);
 
         if ($validator->fails()) {
-            foreach($validator->errors()->all() as $error) {
+            foreach ($validator->errors()->all() as $error) {
                 $this->error($error);
             }
 

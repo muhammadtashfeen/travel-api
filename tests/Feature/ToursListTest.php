@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use App\Models\Tour;
 use App\Models\Travel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ToursListTest extends TestCase
@@ -15,7 +14,7 @@ class ToursListTest extends TestCase
     public function testTourExistUnderCorrectSlug()
     {
         $travel = Travel::factory()->create();
-        $tour = Tour::factory()->create([ 'travel_id' => $travel->id ]);
+        $tour = Tour::factory()->create(['travel_id' => $travel->id]);
 
         $response = $this->get("/api/v1/travels/{$travel->slug}/tours");
 
@@ -71,7 +70,6 @@ class ToursListTest extends TestCase
             'ending_date' => now()->addDays(1),
         ]);
 
-
         $response = $this->get("/api/v1/travels/{$travel->slug}/tours");
 
         $response->assertStatus(200);
@@ -99,7 +97,6 @@ class ToursListTest extends TestCase
             'starting_date' => now(),
             'ending_date' => now()->addDays(1),
         ]);
-
 
         $response = $this->get("/api/v1/travels/{$travel->slug}/tours?sortBy=price&sortOrder=asc");
 

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 class TravelUpdateRequest extends FormRequest
@@ -22,9 +23,12 @@ class TravelUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        /** @var Request $route */
+        $route = $this->route('travel');
+
         return [
             'is_public' => 'boolean',
-            'name' => ['required', Rule::unique('travels')->ignore($this->route('travel')->id)],
+            'name' => ['required', Rule::unique('travels')->ignore($route->id)],
             'description' => ['required'],
             'number_of_days' => ['required', 'integer'],
         ];
